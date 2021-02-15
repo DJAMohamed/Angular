@@ -1,0 +1,33 @@
+<!-- Faire une Toto / CRUD à faire / Modifier l'état. -->
+<!-- Ma tâche : Id, tâche (nom), statut. -->
+<!-- C'est là qu'on injecte le nom du composant. -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 border"> À faire : </div>
+        <div class="col-sm-6 border"> Faites : </div>
+    </div>
+    <div class="row border" *ngFor="let task of tab">
+        <div class="col-sm-6 border">
+            <div *ngIf="task.update == false">
+                <div *ngIf="task.state == false">
+                    {{task.task}}
+                    <button (click)="delete(task.id)"> X </button>
+                    <button (click)="check(task)"> Fait </button>
+                    <button (click)="update(task)"> Update</button>
+                </div>
+            </div>
+            <div *ngIf="task.update == true">
+                <input type="text" [(ngModel)]=task.task (keydown.enter)="update(task)">
+            </div>
+        </div>
+        <div class="col-sm-6 border">
+
+            <div *ngIf="task.state == true">
+                {{task.task}}
+                <button (click)="delete(task.id)"> X </button>
+                <button (click)="check(task)"> À refaire </button>
+            </div>
+        </div>
+    </div>
+    <input type="text" placeholder="Entrer une tâche." #task (keydown.enter)="add(task)">

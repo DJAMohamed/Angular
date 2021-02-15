@@ -1,0 +1,14 @@
+<p> Le composant enfant. </p>
+
+<div *ngFor="let user of tableau">
+    <div *ngIf="user.name">
+        {{user.name}}
+    </div>
+    <div *ngIf ="!user.name">
+        {{user}}
+    </div>
+</div>
+
+<p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga tempora recusandae repudiandae deserunt aut, deleniti illo sint dolore hic nisi blanditiis nulla sed quasi? Eaque harum iusto ex rerum inventore? </p>
+
+<!-- <button (click)="addEnfant()"> Ajouter </button> -->

@@ -1,0 +1,9 @@
+<p> Le composant parent. </p>
+<!-- <app-enfant [tableau]="tab"></app-enfant> -->
+
+
+<!-- let tableau = tab; En Javascript. -->
+
+<app-enfant [tableau]="tab" (newUser) = "add($event)"></app-enfant>
+
+<app-enfant [tableau]="tab2" (newNumber) = "addNumber($event)"></app-enfant>

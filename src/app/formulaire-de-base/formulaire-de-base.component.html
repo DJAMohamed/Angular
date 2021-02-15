@@ -1,0 +1,22 @@
+<p> Formulaires. </p>
+<form (ngSubmit)="soumettre()" [formGroup]="userProfilForm">
+    <label> Nom :
+        <input type="text"
+        formControlName="nom">
+    </label>
+
+    <label> Prénom :
+        <input type="text"
+        formControlName="prenom">
+    </label>
+
+    <label> Âge :
+        <input type="text"
+        formControlName="age">
+    </label>
+
+    <button type="submit"> Validation </button>
+
+</form>
+
+<router-outlet></router-outlet>

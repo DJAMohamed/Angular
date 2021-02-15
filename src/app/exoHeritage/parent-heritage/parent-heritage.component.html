@@ -1,0 +1,13 @@
+<p> Liste des clients - Composant parent. </p>
+
+<div *ngFor="let user of tab">
+    <div>
+        <ul>
+            <li> Nom : {{user.nom}} </li>
+            <li> Prénom : {{user.prenom}} </li>
+            <li> Âge : {{user.age}} </li>
+          </ul>
+    </div>
+</div>
+
+<app-enfant-heritage (newUser) = "add($event)"></app-enfant-heritage>

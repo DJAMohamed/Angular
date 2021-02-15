@@ -1,0 +1,96 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+<div class="container">
+    <div class="row border">
+        <div class="col-sm-6 border"><b> Tâches à faire : </b></div>
+        <div class="col-sm-6 border"><b> Tâches faites : </b></div>
+    </div>
+    <div class="row border" *ngFor="let tache of taches">
+        <div class="col-sm-6 border">
+            <ng-template [ngIf]="tache.etat == true">
+                Id : {{tache.id}};
+                Nom : {{tache.name}};
+                État : {{tache.etat}};
+                <input type="button" value="Delete" class="btn btn-danger" (click)="supprimerTache(tache.id)">
+                <input type="button" value="Update State" class="btn btn-warning" (click)="modifierEtat(tache.id)">
+            </ng-template>
+        </div>
+        <div class="col-sm-6 border">
+            <ng-template [ngIf]="tache.etat == false">
+                Id : {{tache.id}};
+                Nom : {{tache.name}};
+                État : {{tache.etat}};
+                <input type="button" value="Delete" class="btn btn-danger" (click)="supprimerTache(tache.id)">
+                <input type="button" value="Update State" class="btn btn-warning" (click)="modifierEtat(tache.id)">
+            </ng-template>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div>
+        <p> </p>
+        <p> Ajout d'une tâche - Nom de la tâche : <input type="text" [(ngModel)]="variableTemporaire1">
+            <input type="button" value="Add" class="btn btn-success" (click)="ajouterTache()">
+    </div>
+</div>
+
+<div class="container">
+    <div>
+        <p> </p>
+        <p> Modification d'une tâche - Identifiant de la tâche : <input type="number" [(ngModel)]="variableTemporaire2">
+            - Nouveau nom de la tâche : <input type="text" [(ngModel)]="variableTemporaire3">
+            <input type="button" value="Modify" class="btn btn-warning" (click)="modifierTache()">
+    </div>
+</div>
+
+<h1> Nouveau composant. </h1>
+
+<!-- Interpolation. -->
+<p> Son nom est : {{ nom }} </p>
+
+<p *ngFor="let user of users">
+    nom : {{ user.name }},
+    age: {{ user.age}} ans
+    <button (click)="hello(user.name)"> Boutton.</button>
+</p>
+
+<!-- Property Binding. -->
+<div id="img">
+    <img [src]="img" alt="">
+</div>
+
+<!-- Event Binding. -->
+<button (click)="hello()"> Boutton.</button>
+
+<!-- Two-Way Data Binding : Mélange de Property et de Event. -->
+<div>
+    {{message}}
+</div>
+<div>
+    <!-- Première méthode. -->
+    <input type="text" [value]="message" (input)="message=$event.target.value">
+</div>
+
+<div>
+    <!-- Deuxième solution. -->
+    <input type="text" [ngModel]="message" (ngModelChange)="message = $event">
+</div>
+
+<div>
+    <!-- Troisième solution. -->
+    <!-- Banana In The Box -->
+    <input type="text" [(ngModel)]="message">
+</div>
+
+<!-- Les pipes. -->
+<div>
+    <p> {{message | uppercase}} </p>
+    <p> Pi : {{nombre | number:'1.1-2'}} </p>
+    <!-- Un avant la virgule, deux après. -->
+    <p> Pourcentage : {{pourcent | percent}} </p>
+    <p> Date : {{date | date}} </p>
+    <p> Heure : {{date | date:'shortTime'}} </p>
+    <p> Utilisateur : {{user | json}}</p>
+</div>

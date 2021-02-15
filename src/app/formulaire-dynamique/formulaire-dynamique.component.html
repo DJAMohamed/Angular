@@ -1,0 +1,15 @@
+<h2> Formulaire dynamique, Angular. </h2>
+
+<form (ngSubmit)="soumettre()" [formGroup] = "TeamForm">
+    <h4> Création dynamique d'une équipe : </h4>
+    <div formArrayName="membres">
+        <div *ngFor="let member of members.controls; let i = index">
+            <label>
+                Membre :
+                <input type="text" [formControlName] = i>
+            </label>
+        </div>
+        <button (click)="addMembre()"> Ajouter membre. </button>
+    </div>
+    <button type="submit"> Validation. </button>
+</form>
